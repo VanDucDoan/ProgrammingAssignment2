@@ -2,7 +2,11 @@
 ## functions do
 
 ## Write a short comment describing this function
-
+# speMatrix include two variables: matrix and its inverse matrix
+# To create a special matrix, speMat <- makeCacheMatrix()
+# To set a matrix for special matrix, speMat$set()
+# To get a matrix for special matrix, speMat$get()
+# To get the inverse matrix, speMat$getInvMat()
 makeCacheMatrix <- function(x = matrix()) {
   invMat <- NULL
   set <- function(y){
@@ -19,7 +23,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Write a short comment describing this function
-
+# cacheSolve will calculate the inverse matrix if it has not been calculated
+# if the inverse matrix has been calculated, it will simply output this matrix without re-calculation
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
   invMat <- x$getInvMat()
@@ -28,7 +33,7 @@ cacheSolve <- function(x, ...) {
     return(invMat)
   }
   Mat <- x$get()
-  invMat <- solve(Mat)
+  invMat <- solve(Mat, ...)
   x$setInvMat(invMat)
   return(invMat)
 }
